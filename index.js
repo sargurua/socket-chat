@@ -15,5 +15,7 @@ http.listen(3000, function(){
 });
 
 io.on('connection', function(socket){
-    socket.broadcast.emit('hi');
+    socket.on('chat message', function(msg){
+      io.emit('chat message', msg);
+    });
 });
